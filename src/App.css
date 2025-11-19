@@ -4,6 +4,14 @@
   padding: 2rem;
   text-align: center;
 }
+
+body {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
 p {
   font-family: Pretendard;
   font-style: normal;

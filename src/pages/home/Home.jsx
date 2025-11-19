@@ -1,8 +1,16 @@
 import { useState, useEffect } from "react";
 import MissionHeader from "../../components/home/missionHeader";
+import MemberInfo from "../../components/home/MemberInfo";
 
 function Home() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({
+    succedDays: 0,
+    leftDays: 0,
+    goal: "",
+    prize: "",
+    members: [],
+    notion: "",
+  });
   useEffect(() => {
     fetch("http://localhost:5173/data/homeData.json", {
       method: "GET",
@@ -12,7 +20,6 @@ function Home() {
         setData(data[0]);
       });
   }, []);
-
   return (
     <div>
       <div>
@@ -22,15 +29,7 @@ function Home() {
           goal={data.goal}
           prize={data.prize}
         />
-        <div>
-          <span>
-            <p>총 인원 정보</p>
-            <div>
-              <p>개인 프로필 사진</p>
-              <p>개인 이름</p>
-            </div>
-          </span>
-        </div>
+        <MemberInfo members={data.members} />
         <div>
           <p>공지 : 다들 잊지 말고 힘내봅시다!</p>
         </div>
