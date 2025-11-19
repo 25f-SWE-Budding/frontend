@@ -5,6 +5,19 @@
     "totalChallangeDays": 17,
     "succedDays": 10,
     "leftDays": 7,
-    "prize": "iPad Air"
+    "prize": "iPad Air",
+    "members": [
+      "홍길동",
+      "홍길동",
+      "홍길동",
+      "홍길동",
+      "홍길동",
+      "홍길동",
+      "홍길동",
+      "홍길동",
+      "홍길동",
+      "홍길동"
+    ],
+    "notion": "다들 잊지 말고 힘내봅시다 !"
   }
 ]
