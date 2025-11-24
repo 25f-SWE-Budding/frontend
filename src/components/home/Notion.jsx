@@ -1,4 +1,5 @@
 import styles from "./Notion.module.css";
+import NotionIcon from "../../assets/notion-icon.svg";
 
 function Notion({ notion }) {
   return (
