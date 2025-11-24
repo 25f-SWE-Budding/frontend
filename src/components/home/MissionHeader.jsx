@@ -11,7 +11,15 @@ function MissionHeader({ succedDays, leftDays, goal, prize }) {
         <p className={styles.goal}>{goal}</p>
       </div>
       <div className={styles.prizeContainer}>
-        <p>보상 사진</p>
+        <div className={styles.imageFrame}>
+          <img
+            className={styles.image}
+            src={
+              "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQiOPMOqwlBx76tteUUGV0y73iTJmAbq7nCm6qiGq2cjJgii5lYneGIsmwuRWvw9BgwuKebg84C0qFjlliSnzSvFEJhZewpnO6e3_nukjZmejMshpObog66"
+            }
+            alt={"prize-" + prize}
+          />
+        </div>
         <p className={styles.prize}>{prize}</p>
       </div>
     </div>

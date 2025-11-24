@@ -46,3 +46,18 @@
   align-items: center;
   gap: 4px;
 }
+
+.imageFrame {
+  width: 36px;
+  height: 36px;
+  border-radius: 315px;
+  border: 0.9px solid white;
+  background: white;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
