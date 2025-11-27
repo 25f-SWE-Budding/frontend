@@ -1,24 +1,37 @@
 import { useState, useEffect } from "react";
 import styles from "./Character.module.css";
 import starIcon from "../../assets/star-icon.png";
+import pointIcon from "../../assets/point-icon.png";
 import Button from "../../components/ui/Button";
 
 function Character() {
   return (
-    <div>
+    <div className={styles.container}>
       <div className="characterContainer" id={styles.background}>
-        <div>
-          <div>
+        <div className={styles.gotoContainer}>
+          <div className={styles.gotoButtons}>
             <span>
-              <img src={starIcon} alt="star-icon" width="47" />
-              <Button name={"나의 도전"} url={"/"} />
+              <img className={styles.gotoIcon} src={starIcon} alt="star-icon" />
+              <Button
+                className={styles.buttonText}
+                name={"나의 도전"}
+                url={"/"}
+              />
             </span>
             <span>
-              <img src={starIcon} alt="star-icon" width="47" />
+              <img className={styles.gotoIcon} src={starIcon} alt="star-icon" />
               <Button name={"공지"} url={"/"} />
             </span>
           </div>
-          <p>point</p>
+          <div className={styles.pointContainer}>
+            <img
+              className={styles.pointIcon}
+              src={pointIcon}
+              alt="point-icon"
+              width="20"
+            />
+            <p>usr point data</p>
+          </div>
         </div>
         <div>
           <p>character message</p>

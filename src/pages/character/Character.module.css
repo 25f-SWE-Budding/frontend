@@ -5,3 +5,43 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.gotoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.gotoButtons {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gotoButtons span {
+  display: flex;
+  width: 50px;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.gotoIcon {
+  width: 47px;
+  height: 47px;
+  aspect-ratio: 1/1;
+}
+
+.pointContainer {
+  display: inline-flex;
+  padding: 4px 8px 4px 6px;
+  align-items: center;
+  gap: 4px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(2px);
+}
+
+.pointIcon {
+}
