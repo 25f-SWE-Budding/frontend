@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
+import styles from "./Character.module.css";
 
 function Character() {
   return (
     <div>
-      <div>
-        <h1>character background</h1>
+      <div className="characterContainer" id={styles.background}>
         <div>
           <div>
             <p>나의 도전</p>
