@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import Button from "../../components/ui/Button";
 import styles from "./Character.module.css";
 import starIcon from "../../assets/star-icon.png";
 import pointIcon from "../../assets/point-icon.png";
-import Button from "../../components/ui/Button";
+import avatar from "../../assets/avatar/avatar.png";
 
 function Character() {
   return (
@@ -34,7 +35,7 @@ function Character() {
         </div>
         <div>
           <p>character message</p>
-          <p>character</p>
+          <img className={styles.avatar} src={avatar} alt="avatar" />
         </div>
       </div>
       <div>
