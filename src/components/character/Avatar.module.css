@@ -1,0 +1,56 @@
+.avatarSection {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 항상 같은 높이를 유지하도록 높이 고정 */
+.messageBubbleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 메시지가 없을 때: 공간은 남기되, 안 보이게만 처리 */
+.messageBubbleHidden {
+  visibility: hidden; /* layout 유지 + 화면에서만 숨김 */
+}
+
+/* 말풍선 박스 */
+.messageBubble {
+  text-align: center;
+  padding: 10px 14px;
+
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+
+  position: relative;
+}
+
+.messageName {
+  color: #ff6701;
+  font-family: Pretendard;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: -0.5px;
+}
+
+.message {
+  color: #1c1c1c;
+  font-family: Pretendard;
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.5px;
+}
+
+.avatar {
+  width: 230px;
+  height: auto;
+  object-fit: contain;
+}

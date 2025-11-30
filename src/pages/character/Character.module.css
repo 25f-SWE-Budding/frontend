@@ -10,7 +10,7 @@
   background-position: center;
 }
 
-.gotoContainer {
+.topContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,24 +21,10 @@
   box-sizing: border-box;
 }
 
-.gotoButtons {
+.shortcutContainer {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-}
-
-.gotoButtons span {
-  display: flex;
-  width: 50px;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.gotoIcon {
-  width: 47px;
-  height: 47px;
-  aspect-ratio: 1/1;
 }
 
 .pointContainer {
@@ -62,56 +48,4 @@
   color: var(--Black-900, #1c1c1c);
   font-size: 14px;
   font-weight: 500;
-}
-
-.avatarSection {
-  margin-top: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.messageBubbleContainer {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.messageBubble {
-  text-align: center;
-  padding: 10px 14px;
-
-  background: #ffffff;
-  border-radius: 14px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
-
-  position: relative;
-}
-
-.messageName {
-  color: #ff6701;
-  text-align: center;
-  font-family: Pretendard;
-  font-size: 12.5px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 16px; /* 128% */
-  letter-spacing: -0.5px;
-}
-
-.message {
-  color: #1c1c1c;
-  font-family: Pretendard;
-  font-size: 12.5px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px;
-  letter-spacing: -0.5px;
-}
-
-.avatar {
-  width: 230px;
-  height: auto;
-  object-fit: contain;
 }
