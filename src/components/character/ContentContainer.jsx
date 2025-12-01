@@ -3,7 +3,7 @@ function ContentContainer({}) {
   return (
     <div className={styles.container}>
       <div className={styles.index}>
-        <p>hi</p>
+        <p>포인트상점</p>
       </div>
       <div className={styles.contentContainer}>
         <p>bottom bar</p>
