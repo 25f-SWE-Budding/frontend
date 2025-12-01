@@ -18,19 +18,19 @@ function ContentContainer({}) {
               <p>출석체크하고 포인트 받으러가기</p>
             </div>
             <div>
-              <p>만보기</p>
+              <p>1만보기</p>
               <p>이번주는 지난주보다 {walkNumComp}걸음 더 걸었어요</p>
             </div>
             <div>
-              <p>만보기</p>
+              <p>2만보기</p>
               <p>이번주는 지난주보다 {walkNumComp}걸음 더 걸었어요</p>
             </div>
             <div>
-              <p>만보기</p>
+              <p>3만보기</p>
               <p>이번주는 지난주보다 {walkNumComp}걸음 더 걸었어요</p>
             </div>
             <div>
-              <p>만보기</p>
+              <p>4만보기</p>
               <p>이번주는 지난주보다 {walkNumComp}걸음 더 걸었어요</p>
             </div>
           </div>
