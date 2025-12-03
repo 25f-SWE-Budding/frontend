@@ -13,25 +13,17 @@ function ContentContainer({}) {
             <p className={styles.textBold}>매일매일 지급되는 포인트</p>
           </div>
           <div className={styles.contentList}>
-            <div>
-              <p>출석체크</p>
-              <p>출석체크하고 포인트 받으러가기</p>
+            <div className={styles.textContainer}>
+              <p className={styles.textItem}>출석체크</p>
+              <p className={styles.textDescription}>
+                출석체크하고 포인트 받으러가기
+              </p>
             </div>
-            <div>
-              <p>1만보기</p>
-              <p>이번주는 지난주보다 {walkNumComp}걸음 더 걸었어요</p>
-            </div>
-            <div>
-              <p>2만보기</p>
-              <p>이번주는 지난주보다 {walkNumComp}걸음 더 걸었어요</p>
-            </div>
-            <div>
-              <p>3만보기</p>
-              <p>이번주는 지난주보다 {walkNumComp}걸음 더 걸었어요</p>
-            </div>
-            <div>
-              <p>4만보기</p>
-              <p>이번주는 지난주보다 {walkNumComp}걸음 더 걸었어요</p>
+            <div className={styles.textContainer}>
+              <p className={styles.textItem}>만보기</p>
+              <p ClassName={styles.textDescription}>
+                이번주는 지난주보다 {walkNumComp}걸음 더 걸었어요
+              </p>
             </div>
           </div>
         </div>

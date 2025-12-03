@@ -1,0 +1,18 @@
+:root {
+  /* BottomNav 전체 높이 (패딩 포함해서 여유 있게 잡기) */
+  --bottom-nav-height: 80px;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* 가운데 정렬용 옵션 있으면 여기서 */
+}
+
+/* 실제 스크롤 되는 영역 */
+.contents {
+  flex: 1;
+  padding-bottom: var(--bottom-nav-height);
+  box-sizing: border-box;
+}
