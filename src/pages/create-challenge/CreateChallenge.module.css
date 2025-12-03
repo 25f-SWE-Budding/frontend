@@ -1,3 +1,7 @@
 .createChallenge {
-  margin: 26px 20px;
+  width: 100%;
+}
+
+.container {
+  padding: 0 20px;
 }
