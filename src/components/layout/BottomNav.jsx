@@ -4,9 +4,9 @@ import Button from "../ui/Button";
 export default function BottomNav() {
   return (
     <div className={styles.bottomNav}>
-      <Button name={"home"} url={"/"} />
-      <Button name={"profile"} url={"/profile"} />
-      <Button name={"character"} url={"/character"} />
+      <Button name={"홈"} url={"/character"} />
+      <Button name={"백과사전"} url={"/"} />
+      <Button name={"마이페이지"} url={"/profile"} />
     </div>
   );
 }
