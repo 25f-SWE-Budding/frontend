@@ -14,7 +14,7 @@ const CATEGORIES = [
 ];
 
 export default function CategoryField() {
-  const [selected, setSelected] = useState("운동"); // 기본 선택값
+  const [selected, setSelected] = useState(["운동"]); // 기본 선택값
 
   const handleClick = (category) => {
     if (selected.includes(category)) {

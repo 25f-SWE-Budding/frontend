@@ -5,7 +5,7 @@ import CategoryField from "../../components/create-challenge/CategoryField";
 
 function CreateChallenge() {
   return (
-    <div>
+    <div className={styles.createChallenge}>
       <NavigateBar title={"도전 생성하기"} disableCreateBtn={true} />
       <div>
         <p>무엇에 함께 도전할까요?</p>
