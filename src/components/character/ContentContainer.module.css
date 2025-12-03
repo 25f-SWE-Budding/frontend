@@ -10,7 +10,6 @@
 
 .index {
   display: flex;
-  width: 27%;
   padding: 14px 32px 14px 40px;
   justify-content: center;
   align-items: center;
@@ -21,7 +20,7 @@
 
 .contentContainer {
   background: #fff;
-  padding: 30px 20px 20px;
+  padding: 29.5px 0px;
   width: 100%;
 }
 
