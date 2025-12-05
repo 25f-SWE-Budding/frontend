@@ -2,34 +2,41 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "./CreateChallenge.module.css";
 import NavigateBar from "../../components/ui/NavigateBar";
-import NextButton from "../../components/create-challenge/NextButton"; // NextButton 위치 확인 필요
+import NextButton from "../../components/create-challenge/NextButton";
 
-// 예시 컴포넌트들 (나중에 실제 만드신 캘린더, 보상 컴포넌트로 교체하면 돼요)
+// 컴포넌트들
 import TitleField from "../../components/create-challenge/TitleField";
 import CategoryField from "../../components/create-challenge/CategoryField";
 import FriendField from "../../components/create-challenge/FriendField";
-
 import ChallengePeriod from "../../components/create-challenge/ChallengePeriod";
 
-function CreateChallenge() {
-  // 1. 현재 몇 단계인지 기억하는 변수 (0부터 시작)
-  const [step, setStep] = useState(0);
+// [NEW] 방금 만든 보상 선택 컴포넌트 import
+import RewardSelection from "../../components/create-challenge/RewardSelection";
 
+function CreateChallenge() {
+  const [step, setStep] = useState(0);
   const navigate = useNavigate();
-  // 2. 단계별 제목 목록 (책의 목차와 같아요)
+
+  // [NEW] 선택된 보상을 저장할 변수
+  const [selectedReward, setSelectedReward] = useState(null);
+
   const titles = [
-    "도전 생성하기", // step 0 일 때 제목
-    "도전 생성하기", // step 1 일 때 제목
-    "보상 설정하기", // step 2 일 때 제목
+    "도전 생성하기", // step 0
+    "도전 기간 설정", // step 1 (제목을 살짝 바꿨어요)
+    "보상 설정하기", // step 2
+    "결제 하기", // step 3 (결제 단계 추가)
   ];
 
-  // 3. 단계별로 보여줄 내용을 결정하는 함수
+  // [NEW] 보상 선택 화면에서 "이걸로 할게요"를 눌렀을 때 실행될 함수
+  const handleRewardSelect = (product) => {
+    setSelectedReward(product); // 1. 선택한 상품 저장
+    setStep(step + 1); // 2. 다음 단계(결제)로 이동
+  };
+
   const renderContent = () => {
     switch (step) {
       case 0:
         return (
-          // 1단계 화면: 예시로 TitleField를 넣었습니다.
-          // 이미지처럼 만드실 땐 여기에 <Calendar /> 같은 걸 넣으시면 돼요.
           <>
             <TitleField />
             <CategoryField />
@@ -38,53 +45,62 @@ function CreateChallenge() {
         );
       case 1:
         return (
-          // 2단계 화면
           <>
             <ChallengePeriod />
-            <div className={styles.description}>날짜를 고르는 화면입니다.</div>
+            {/* ChallengePeriod 안에 설명이 있으니 div는 지워도 됩니다 */}
           </>
         );
       case 2:
+        // [수정됨] 여기가 핵심입니다!
+        // onSelect 속성으로 handleRewardSelect 함수를 전달해줍니다.
+        return <RewardSelection onSelect={handleRewardSelect} />;
+
+      case 3:
+        // [NEW] 결제 화면 (마지막 단계)
         return (
-          // 3단계 화면
-          <>
-            <div className={styles.description}>보상을 고르는 화면입니다.</div>
-          </>
+          <div className={styles.description}>
+            {selectedReward && (
+              <p style={{ color: "#ff6b00", fontWeight: "bold" }}>
+                선택한 보상: {selectedReward.name}
+              </p>
+            )}
+            <br />
+            친구랑 결제하는 화면입니다.
+          </div>
         );
       default:
         return <div>모든 단계가 끝났습니다!</div>;
     }
   };
 
-  // 4. 다음 버튼을 눌렀을 때 실행할 함수 (책장 넘기기)
   const handleNext = () => {
-    // 만약(if) 지금이 마지막 단계(2)라면?
-    if (step === 2) {
-      navigate("/"); // 홈으로 이동해라!
-    }
-    // 아니라면(else)?
-    else {
-      setStep(step + 1); // 다음 페이지로 넘겨라!
+    // step 3이 마지막이라고 가정
+    if (step === 3) {
+      navigate("/");
+    } else {
+      setStep(step + 1);
     }
   };
 
   return (
     <div className={styles.createChallenge}>
-      {/* 제목을 titles 배열에서 step 번호에 맞춰서 꺼내옵니다 */}
       <NavigateBar title={titles[step]} disableCreateBtn={true} />
 
-      <div className={styles.container}>
-        {/* 현재 step에 맞는 내용만 보여줍니다 */}
-        {renderContent()}
-      </div>
+      <div className={styles.container}>{renderContent()}</div>
 
-      {/* 버튼을 누르면 handleNext가 실행되도록 전달해줍니다 */}
-      <div className={styles.bottomBar}>
-        <NextButton
-          onClick={handleNext}
-          text={step === 2 ? "완료하기" : "다음"}
-        />
-      </div>
+      {/* [중요 로직] 
+         step 2(보상선택)일 때는 RewardSelection 안에 자체 버튼이 있으므로,
+         바깥쪽 NextButton은 숨깁니다 (!== 2).
+      */}
+      {step !== 2 && (
+        <div className={styles.bottomBar}>
+          <NextButton
+            onClick={handleNext}
+            // 마지막 단계(3)면 '완료하기', 아니면 '다음'
+            text={step === 3 ? "완료하기" : "다음"}
+          />
+        </div>
+      )}
     </div>
   );
 }
