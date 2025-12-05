@@ -62,9 +62,23 @@ function CreateChallenge() {
     }
   };
 
+  const handleBack = () => {
+    if (step === 0) {
+      // 첫 단계(0)라면? 더 이상 뺄 step이 없으니 진짜 뒤로(페이지 나가기) 갑니다.
+      navigate(-1);
+    } else {
+      // 1, 2, 3 단계라면? 그냥 전 단계로 돌아갑니다.
+      setStep(step - 1);
+    }
+  };
+
   return (
     <div className={styles.createChallenge}>
-      <NavigateBar title={titles[step]} disableCreateBtn={true} />
+      <NavigateBar
+        title={titles[step]}
+        disableCreateBtn={true}
+        onBack={handleBack}
+      />
 
       <div className={styles.container}>{renderContent()}</div>
 

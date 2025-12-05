@@ -7,6 +7,7 @@ import Notion from "../../components/home/Notion";
 import CharacterGroup from "../../components/home/CharacterGroup";
 import PhotoSection from "../../components/home/PhotoSection"; // [NEW] 추가
 import Calendar from "../../components/home/Calendar";
+import NavigateBar from "../../components/ui/NavigateBar";
 
 function Home() {
   const [data, setData] = useState({
@@ -31,6 +32,7 @@ function Home() {
 
   return (
     <div id={styles.container}>
+      <NavigateBar title="" disableCreateBtn={true} />
       <MissionHeader
         succedDays={data.succedDays}
         leftDays={data.leftDays}
