@@ -17,6 +17,7 @@ import ChallengePayment from "../../components/create-challenge/ChallengePayment
 function CreateChallenge() {
   const [step, setStep] = useState(0);
   const navigate = useNavigate();
+  const [viewingItem, setViewingItem] = useState(null);
   const [selectedReward, setSelectedReward] = useState(null);
 
   const titles = [
@@ -28,7 +29,7 @@ function CreateChallenge() {
 
   const handleRewardSelect = (product) => {
     setSelectedReward(product);
-    setStep(step + 1); // 보상 선택 -> 결제 화면(step 3)으로 이동
+    setStep(step + 1);
   };
 
   const renderContent = () => {
@@ -40,17 +41,22 @@ function CreateChallenge() {
             <CategoryField />
             <FriendField />
           </>
-        );
+        ); // 내용 생략
       case 1:
         return <ChallengePeriod />;
       case 2:
-        return <RewardSelection onSelect={handleRewardSelect} />;
+        // [수정] RewardSelection에게 상태 조종 리모컨(props)을 넘겨줍니다.
+        return (
+          <RewardSelection
+            onSelect={handleRewardSelect}
+            selectedItem={viewingItem} // 현재 보고 있는 아이템 전달
+            setSelectedItem={setViewingItem} // 아이템 변경 함수 전달
+          />
+        );
       case 3:
-        // [NEW] 결제 컴포넌트 보여주기
-        // 선택한 보상 정보(가격 등)를 넘겨줍니다.
         return <ChallengePayment selectedReward={selectedReward} />;
       default:
-        return <div>모든 단계가 끝났습니다!</div>;
+        return <div>끝</div>;
     }
   };
 
@@ -63,12 +69,20 @@ function CreateChallenge() {
   };
 
   const handleBack = () => {
-    if (step === 0) {
-      // 첫 단계(0)라면? 더 이상 뺄 step이 없으니 진짜 뒤로(페이지 나가기) 갑니다.
+    if (step === 3) {
+      setStep(2); // 결제 -> 보상 선택으로
+    } else if (step === 2) {
+      // ★ 여기가 핵심입니다! ★
+      // 만약 보상 상세페이지를 보고 있다면(viewingItem이 있다면)?
+      if (viewingItem) {
+        setViewingItem(null); // 리스트로 돌아가기 (상세페이지 닫기)
+      } else {
+        setStep(1); // 리스트라면 이전 단계(기간 설정)로 가기
+      }
+    } else if (step === 1) {
+      setStep(0);
+    } else if (step === 0) {
       navigate(-1);
-    } else {
-      // 1, 2, 3 단계라면? 그냥 전 단계로 돌아갑니다.
-      setStep(step - 1);
     }
   };
 

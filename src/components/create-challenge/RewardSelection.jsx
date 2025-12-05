@@ -61,9 +61,12 @@ const PRODUCTS = [
   },
 ];
 
-export default function RewardSelection({ onSelect }) {
+export default function RewardSelection({
+  onSelect,
+  selectedItem,
+  setSelectedItem,
+}) {
   // 1. 상태 관리 (선택된 상품, 검색어, 가격 필터)
-  const [selectedItem, setSelectedItem] = useState(null);
   const [searchTerm, setSearchTerm] = useState(""); // 검색어 저장
   const [activeFilter, setActiveFilter] = useState("전체"); // 현재 눌린 필터 버튼 (기본값: 전체)
 
