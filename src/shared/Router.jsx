@@ -12,10 +12,10 @@ function Router() {
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path={ROUTES.HOME} element={<Home />} />
-          <Route path={ROUTES.CHARACTER} element={<Character />} />
+          <Route path={ROUTES.MAIN} element={<Character />} />
+          <Route path={ROUTES.MISSION} element={<Home />} />
           <Route path={ROUTES.PROFILE} element={<Profile />} />
-          <Route path={ROUTES.MY_CHALLENGE} element={<MyChallenge />} />
+          <Route path={ROUTES.MY_CHALLENGES} element={<MyChallenge />} />
           <Route path={ROUTES.CREATE_CHALLENGE} element={<CreateChallenge />} />
         </Routes>
       </Layout>

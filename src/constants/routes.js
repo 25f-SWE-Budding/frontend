@@ -1,8 +1,8 @@
 export const ROUTES = {
-  HOME: '/',
-  CHARACTER: '/character',
-  MY_CHALLENGE: '/my-challenge',
-  CREATE_CHALLENGE: '/create-challenge',
+  MAIN: '/',
+  MISSION: '/mission',
+  MY_CHALLENGES: '/my-challenges',
+  CREATE_CHALLENGE: '/challenges/create',
   PROFILE: '/profile',
   SHOP: '/shop',
 };

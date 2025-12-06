@@ -11,24 +11,24 @@ function BottomNav() {
   const currentPath = location.pathname;
 
   const isHomeActive =
-    currentPath === ROUTES.CHARACTER ||
-    currentPath === ROUTES.MY_CHALLENGE ||
+    currentPath === ROUTES.MAIN ||
+    currentPath === ROUTES.MY_CHALLENGES ||
     currentPath === ROUTES.CREATE_CHALLENGE;
 
-  const isEncyclopediaActive = currentPath === ROUTES.HOME;
+  const isEncyclopediaActive = currentPath === ROUTES.MISSION;
   const isProfileActive = currentPath === ROUTES.PROFILE;
 
   return (
     <div className={styles.bottomNav}>
       <Button
         name="홈"
-        url={ROUTES.CHARACTER}
+        url={ROUTES.MAIN}
         isActive={isHomeActive}
         icon={home}
       />
       <Button
         name="백과사전"
-        url={ROUTES.HOME}
+        url={ROUTES.MISSION}
         isActive={isEncyclopediaActive}
         icon={book}
       />
