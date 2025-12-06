@@ -1,32 +1,32 @@
-import { useState, useEffect } from "react";
+import styles from './Character.module.css';
+import pointIcon from '../../assets/point-icon.png';
+import ShortcutButton from '../../components/character/ShortcutButton';
+import Avatar from '../../components/character/Avatar';
+import ContentContainer from '../../components/character/ContentContainer';
+import { ROUTES } from '../../constants/routes';
 
-import styles from "./Character.module.css";
-import pointIcon from "../../assets/point-icon.png";
+const MOCK_USER_POINT = 144;
+const MOCK_ALERTS = [''];
 
-import ShortcutButton from "../../components/character/ShortcutButton";
-import Avatar from "../../components/character/Avatar";
-import ContentContainer from "../../components/character/ContentContainer";
 function Character() {
-  const alert = [""];
-  const userPoint = 144;
   return (
     <div className={styles.container}>
       <div className="characterContainer">
         <div className={styles.topContainer}>
           <div className={styles.shortcutContainer}>
-            <ShortcutButton name={"나의 도전"} url={"/my-challenge"} />
-            <ShortcutButton name={"공지"} url={"/"} />
+            <ShortcutButton name="나의 도전" url={ROUTES.MY_CHALLENGE} />
+            <ShortcutButton name="공지" url={ROUTES.HOME} />
           </div>
           <div className={styles.pointContainer}>
             <img
               className={styles.pointIcon}
               src={pointIcon}
-              alt="point-icon"
+              alt="포인트 아이콘"
             />
-            <p className={styles.point}>{userPoint}</p>
+            <p className={styles.point}>{MOCK_USER_POINT}</p>
           </div>
         </div>
-        <Avatar alert={alert} />
+        <Avatar alert={MOCK_ALERTS} />
       </div>
       <ContentContainer />
     </div>
