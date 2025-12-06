@@ -1,13 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./FriendField.module.css";
 import PersonIcon from "../../assets/base-user-icon.svg?react";
 import SearchIcon from "../../assets/search-icon.svg?react";
 import CloseIcon from "../../assets/close-icon2.svg?react";
+import { useAuth } from "../../hooks/useAuth";
+import { useFetch } from "../../hooks/useFetch";
+import { API_ENDPOINTS } from "../../constants/api";
 
 const MOCK_FRIENDS = ["김현아", "김현아", "김현아", "김현아", "김현아"];
 
 export default function FriendField() {
+  const { userId } = useAuth();
+  const { data: friendsData = MOCK_FRIENDS } = useFetch(
+    API_ENDPOINTS.FRIENDSHIP.LIST_BY_USER(userId),
+    MOCK_FRIENDS
+  );
   const [friends, setFriends] = useState(MOCK_FRIENDS);
+
+  useEffect(() => {
+    if (Array.isArray(friendsData)) {
+      setFriends(friendsData);
+    }
+  }, [friendsData]);
 
   const handleRemove = (name, index) => {
     setFriends((prev) =>

@@ -3,9 +3,14 @@ import styles from './Avatar.module.css';
 import avatar from '../../assets/avatar/avatar.png';
 import MessagePoint from '../../assets/message-point.svg?react';
 import AvatarShade from '../../assets/avatar/avatar-shade.svg?react';
+import { useAuth } from '../../hooks/useAuth';
+import { useFetch } from '../../hooks/useFetch';
+import { API_ENDPOINTS } from '../../constants/api';
 
 function Avatar() {
-  const friend = "지현이";
+  const { userId } = useAuth();
+  const { data: avatarData } = useFetch(API_ENDPOINTS.AVATAR.GET(userId));
+  const friend = avatarData?.friendName || "지현이";
   const hasMessage = friend !== "";
 
   return (

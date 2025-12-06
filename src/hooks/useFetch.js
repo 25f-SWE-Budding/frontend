@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { API_BASE_URL } from '../constants/api';
 
-export const useFetch = (url, initialData = null) => {
+export const useFetch = (url, initialData = null, options = {}) => {
   const [data, setData] = useState(initialData);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -15,7 +16,20 @@ export const useFetch = (url, initialData = null) => {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch(url);
+        
+        // URL이 절대 경로가 아니면 API_BASE_URL 추가
+        const fullUrl = url.startsWith('http') ? url : `${API_BASE_URL}${url}`;
+        
+        const defaultHeaders = {
+          'Content-Type': 'application/json',
+        };
+        
+        const fetchOptions = {
+          headers: { ...defaultHeaders, ...options.headers },
+          ...options,
+        };
+        
+        const response = await fetch(fullUrl, fetchOptions);
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

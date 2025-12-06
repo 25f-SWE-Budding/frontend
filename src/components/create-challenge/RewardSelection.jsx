@@ -1,8 +1,10 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './RewardSelection.module.css';
 import { PRODUCTS, PRICE_FILTERS } from '../../constants/products';
 import { filterProducts } from '../../utils/filters';
+import { useFetch } from '../../hooks/useFetch';
+import { API_ENDPOINTS } from '../../constants/api';
 import {
   formatPrice,
   calculatePricePerPerson,
@@ -14,10 +16,18 @@ const FILTER_OPTIONS = Object.values(PRICE_FILTERS);
 function RewardSelection({ onSelect, selectedItem, setSelectedItem }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilter, setActiveFilter] = useState(PRICE_FILTERS.ALL);
+  const { data: apiItems = PRODUCTS } = useFetch(API_ENDPOINTS.ITEM.LIST, PRODUCTS);
+  const [products, setProducts] = useState(PRODUCTS);
+
+  useEffect(() => {
+    if (Array.isArray(apiItems)) {
+      setProducts(apiItems);
+    }
+  }, [apiItems]);
 
   const filteredProducts = useMemo(
-    () => filterProducts(PRODUCTS, searchTerm, activeFilter),
-    [searchTerm, activeFilter]
+    () => filterProducts(products, searchTerm, activeFilter),
+    [products, searchTerm, activeFilter]
   );
 
   const renderList = () => (
