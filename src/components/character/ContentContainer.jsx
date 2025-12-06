@@ -1,5 +1,6 @@
-import styles from "./ContentContainer.module.css";
-function ContentContainer({}) {
+import styles from './ContentContainer.module.css';
+
+function ContentContainer() {
   const walkNumComp = "5천";
   return (
     <div className={styles.container}>
