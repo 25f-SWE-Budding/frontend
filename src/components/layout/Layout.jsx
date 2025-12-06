@@ -1,18 +1,24 @@
-import { useLocation } from "react-router-dom";
-import BottomNav from "./BottomNav";
-import styles from "./Layout.module.css";
+import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import BottomNav from './BottomNav';
+import styles from './Layout.module.css';
+import { ROUTES } from '../../constants/routes';
 
 function Layout({ children }) {
   const location = useLocation();
-  const hideNavPaths = ["/create-challenge"];
+  const hideNavPaths = [ROUTES.CREATE_CHALLENGE];
   const shouldHideNav = hideNavPaths.includes(location.pathname);
+
   return (
     <div className={styles.app}>
-      {/* 앞으로 Header 쓰면 여기 넣기 좋음 */}
       <div className={styles.contents}>{children}</div>
       {!shouldHideNav && <BottomNav />}
     </div>
   );
 }
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default Layout;
