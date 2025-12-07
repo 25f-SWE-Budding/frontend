@@ -20,8 +20,8 @@ function Character() {
       <div className="characterContainer">
         <div className={styles.topContainer}>
           <div className={styles.shortcutContainer}>
-            <ShortcutButton name="나의 도전" url={ROUTES.MY_CHALLENGES} />
-            <ShortcutButton name="공지" url={ROUTES.MISSION} />
+            <ShortcutButton name="나의 도전" url={ROUTES.CHALLENGES} />
+            <ShortcutButton name="홈" url={ROUTES.DASHBOARD} />
           </div>
           <div className={styles.pointContainer}>
             <img
