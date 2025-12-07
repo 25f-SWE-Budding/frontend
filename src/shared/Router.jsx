@@ -1,24 +1,43 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from '../pages/home/Home';
-import Profile from '../pages/profile/Profile';
+import Login from '../pages/login/Login';
+import Dashboard from '../pages/dashboard/Dashboard';
 import Character from '../pages/character/Character';
 import MyChallenge from '../pages/my-challenge/MyChallenge';
+import Home from '../pages/home/Home';
 import CreateChallenge from '../pages/create-challenge/CreateChallenge';
+import Profile from '../pages/profile/Profile';
+import Shop from '../pages/shop/Shop';
 import Layout from '../components/layout/Layout';
+import ProtectedRoute from '../components/auth/ProtectedRoute';
 import { ROUTES } from '../constants/routes';
 
 function Router() {
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path={ROUTES.MAIN} element={<Character />} />
-          <Route path={ROUTES.MISSION} element={<Home />} />
-          <Route path={ROUTES.PROFILE} element={<Profile />} />
-          <Route path={ROUTES.MY_CHALLENGES} element={<MyChallenge />} />
-          <Route path={ROUTES.CREATE_CHALLENGE} element={<CreateChallenge />} />
-        </Routes>
-      </Layout>
+      <Routes>
+        {/* Public Routes */}
+        <Route path={ROUTES.LOGIN} element={<Login />} />
+        
+        {/* Protected Routes */}
+        <Route
+          path="*"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Routes>
+                  <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
+                  <Route path={ROUTES.CHARACTER} element={<Character />} />
+                  <Route path={ROUTES.CHALLENGES} element={<MyChallenge />} />
+                  <Route path="/challenges/:id" element={<Home />} />
+                  <Route path={ROUTES.CREATE_CHALLENGE} element={<CreateChallenge />} />
+                  <Route path={ROUTES.PROFILE} element={<Profile />} />
+                  <Route path={ROUTES.SHOP} element={<Shop />} />
+                </Routes>
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
     </BrowserRouter>
   );
 }

@@ -10,30 +10,26 @@ function BottomNav() {
   const location = useLocation();
   const currentPath = location.pathname;
 
-  const isHomeActive =
-    currentPath === ROUTES.MAIN ||
-    currentPath === ROUTES.MY_CHALLENGES ||
-    currentPath === ROUTES.CREATE_CHALLENGE;
-
-  const isEncyclopediaActive = currentPath === ROUTES.MISSION;
+  const isHomeActive = currentPath === ROUTES.DASHBOARD;
+  const isChallengesActive = currentPath.startsWith('/challenges');
   const isProfileActive = currentPath === ROUTES.PROFILE;
 
   return (
     <div className={styles.bottomNav}>
       <Button
         name="홈"
-        url={ROUTES.MAIN}
+        url={ROUTES.DASHBOARD}
         isActive={isHomeActive}
         icon={home}
       />
       <Button
-        name="백과사전"
-        url={ROUTES.MISSION}
-        isActive={isEncyclopediaActive}
+        name="도전"
+        url={ROUTES.CHALLENGES}
+        isActive={isChallengesActive}
         icon={book}
       />
       <Button
-        name="마이페이지"
+        name="프로필"
         url={ROUTES.PROFILE}
         isActive={isProfileActive}
         icon={user}

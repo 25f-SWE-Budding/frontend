@@ -20,8 +20,12 @@ export const useFetch = (url, initialData = null, options = {}) => {
         // URL이 절대 경로가 아니면 API_BASE_URL 추가
         const fullUrl = url.startsWith('http') ? url : `${API_BASE_URL}${url}`;
         
+        // 토큰 가져오기
+        const token = localStorage.getItem('authToken');
+        
         const defaultHeaders = {
           'Content-Type': 'application/json',
+          ...(token && { 'Authorization': `Bearer ${token}` }),
         };
         
         const fetchOptions = {

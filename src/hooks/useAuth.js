@@ -1,31 +1,64 @@
 import { useState, useEffect } from 'react';
 
 const USER_ID_KEY = 'userId';
-const DEFAULT_USER_ID = 1; // 테스트용 기본값
+const TOKEN_KEY = 'authToken';
+const USER_INFO_KEY = 'userInfo';
 
 export const useAuth = () => {
   const [userId, setUserIdState] = useState(() => {
-    // 초기화: 로컬스토리지에서 userId 가져오기
     const stored = localStorage.getItem(USER_ID_KEY);
-    return stored ? parseInt(stored, 10) : DEFAULT_USER_ID;
+    return stored ? parseInt(stored, 10) : null;
   });
 
-  // userId 업데이트 함수
+  const [token, setTokenState] = useState(() => {
+    return localStorage.getItem(TOKEN_KEY);
+  });
+
+  const [userInfo, setUserInfoState] = useState(() => {
+    const stored = localStorage.getItem(USER_INFO_KEY);
+    return stored ? JSON.parse(stored) : null;
+  });
+
+  // 로그인 상태 확인
+  const isAuthenticated = Boolean(token && userId);
+
+  // 로그인
+  const login = (id, authToken, info = null) => {
+    setUserIdState(id);
+    setTokenState(authToken);
+    setUserInfoState(info);
+    
+    localStorage.setItem(USER_ID_KEY, id.toString());
+    localStorage.setItem(TOKEN_KEY, authToken);
+    if (info) {
+      localStorage.setItem(USER_INFO_KEY, JSON.stringify(info));
+    }
+  };
+
+  // 로귵58웃
+  const logout = () => {
+    setUserIdState(null);
+    setTokenState(null);
+    setUserInfoState(null);
+    
+    localStorage.removeItem(USER_ID_KEY);
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_INFO_KEY);
+  };
+
+  // userId 업데이트 함수 (호환성)
   const setUserId = (id) => {
     setUserIdState(id);
     localStorage.setItem(USER_ID_KEY, id.toString());
   };
 
-  // 로그인
-  const login = (id) => {
-    setUserId(id);
+  return { 
+    userId, 
+    token,
+    userInfo,
+    isAuthenticated,
+    setUserId, 
+    login, 
+    logout 
   };
-
-  // 로그아웃
-  const logout = () => {
-    localStorage.removeItem(USER_ID_KEY);
-    setUserIdState(DEFAULT_USER_ID);
-  };
-
-  return { userId, setUserId, login, logout };
 };

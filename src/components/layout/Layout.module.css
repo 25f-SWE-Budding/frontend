@@ -2,12 +2,15 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* 가운데 정렬용 옵션 있으면 여기서 */
+  position: relative;
+  overflow-x: hidden;
 }
 
 /* 실제 스크롤 되는 영역 */
 .contents {
   flex: 1;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .bottomNav {
