@@ -1,15 +1,27 @@
 .container {
-  padding: 20px;
+  padding: 0;
   background-color: #f5f5f5;
   min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+.header {
+  padding: 20px;
+  background-color: white;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.pageTitle {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1c1c1c;
 }
 
 .profileSection {
   background-color: white;
-  border-radius: 8px;
-  padding: 24px;
-  margin-bottom: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px 20px;
+  margin-bottom: 16px;
 }
 
 .userInfo {
@@ -22,7 +34,7 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background-color: #e5e7eb;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,12 +53,49 @@
   font-size: 14px;
 }
 
+.statsSection {
+  background-color: white;
+  padding: 24px 20px;
+  margin-bottom: 16px;
+}
+
+.statsSection h3 {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1c1c1c;
+}
+
+.statsList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.statItem {
+  text-align: center;
+  padding: 16px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+}
+
+.statValue {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #667eea;
+}
+
+.statLabel {
+  margin: 0;
+  font-size: 12px;
+  color: #666;
+}
+
 .itemsSection {
   background-color: white;
-  border-radius: 8px;
-  padding: 24px;
-  margin-bottom: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px 20px;
+  margin-bottom: 16px;
 }
 
 .itemsSection h3 {
@@ -56,15 +105,15 @@
 }
 
 .itemsList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 12px;
 }
 
 .itemCard {
   background-color: #f9fafb;
-  border-radius: 6px;
-  padding: 12px;
+  border-radius: 8px;
+  padding: 16px;
   border: 1px solid #e5e7eb;
 }
 
@@ -94,17 +143,19 @@
 }
 
 .logoutButton {
-  padding: 12px 24px;
+  padding: 14px 32px;
   background-color: #ef4444;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 14px;
-  transition: background-color 0.2s;
+  font-size: 15px;
+  transition: transform 0.2s ease, background-color 0.2s;
+  user-select: none;
 }
 
-.logoutButton:hover {
+.logoutButton:active {
+  transform: scale(0.96);
   background-color: #dc2626;
 }
