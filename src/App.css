@@ -1,17 +1,22 @@
 /* root 컨테이너 설정 */
 :root {
-  --bottom-nav-height: 80px; /* 대략 padding 포함 70~80 정도 */
+  --bottom-nav-height: 80px;
+  --mobile-width: 430px;
 }
 
 #root {
-  max-width: 1280px;
+  max-width: var(--mobile-width);
+  width: 100%;
   margin: 0 auto;
-  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 /* 공통 스타일 */
 body {
   -ms-overflow-style: none;
+  background-color: #f0f0f0;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -19,11 +24,25 @@ body {
 }
 
 p {
-  font-family: Pretendard;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-style: normal;
-  line-height: normal;
+  line-height: 1.5;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 * {
-  box-sizing: border-box; /* padding 포함해서 width 유지 */
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
+}
+
+button {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
